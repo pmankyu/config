@@ -1,0 +1,27 @@
+# visual bell
+set-option -g visual-bell on
+
+set -g mouse on
+setw -g mode-keys vi
+
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+#bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+# setting for vim color scheme
+set -g default-terminal "xterm"
+set -g default-terminal "xterm-256color"
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+
+run '~/.tmux/plugins/tpm/tpm'
