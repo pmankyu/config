@@ -1,0 +1,44 @@
+syntax enable
+filetype plugin indent on
+
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set cindent
+"set expandtab
+set ai
+set number
+set hlsearch
+set ruler
+set colorcolumn=81
+set splitright
+set splitbelow
+set mouse=a
+set termguicolors
+
+" colorscheme
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
+set background=dark
+
+highlight Comment ctermfg=green
+
+let g:rustfmt_autosave = 1
+
+autocmd BufEnter * lcd %:p:h
+set clipboard=unnamed " use OS clipboard
+set tags=./tags,./../tags,./../../tags,./../../../tags,./../../../../tags
+
+" <F3> NERDTree
+map <F3> :NERDTreeToggle<cr>
+
+call plug#begin('~/.vim/plugged')
+	Plug 'ludovicchabant/vim-gutentags'	
+	
+	Plug 'preservim/nerdtree'
+
+	Plug 'rust-lang/rust.vim'
+	Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+	Plug 'morhetz/gruvbox'
+call plug#end()
